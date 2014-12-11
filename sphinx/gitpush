@@ -4,4 +4,9 @@ string=$@
 
 echo $string
 
+string=$'$string'
+
+echo $string
+
+
 git commit -am '$string'
