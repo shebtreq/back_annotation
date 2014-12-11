@@ -5,7 +5,7 @@ My Sphinx Documentation
 Contents:
 
 .. toctree::
-   :maxdepth: 4
+   :maxdepth: 2
 
    toctreepoints
    randompoints
