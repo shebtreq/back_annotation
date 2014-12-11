@@ -2,7 +2,7 @@
 
 string=$@
 
-command="git commit -m '$@'"
+command="git commit -am '$@'"
 
 echo $command
 
