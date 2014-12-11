@@ -1,12 +1,5 @@
-My Sphinx Documentation
+TocTree Points
 ==========================================
-
-Contents:
-
-.. toctree::
-   :maxdepth: 4
-   
-   point1
 
 
 
