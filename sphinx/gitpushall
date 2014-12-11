@@ -4,10 +4,14 @@ string=$@
 
 addall="git add ."
 commit="git commit -m '$@'"
+push="git push"
 
 echo $addall
-echo $commit
-
 $addall
+
+echo $commit
 $commit
+
+echo $push
+$push
 
