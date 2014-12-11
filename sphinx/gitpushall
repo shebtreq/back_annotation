@@ -7,9 +7,8 @@ commit=$'git commit -m \''$@$'\''
 push="git push"
 
 echo $addall
-$addall
-
 echo $commit
+$addall
 $commit
 
 echo $push
