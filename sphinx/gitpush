@@ -2,11 +2,8 @@
 
 string=$@
 
-echo $string
+command="git commit -am '$@'"
 
-string=$'$string'
+echo $command
 
-echo $string
-
-
-git commit -am '$string'
+$command
