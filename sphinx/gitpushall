@@ -13,5 +13,5 @@ echo $commit
 $commit
 
 echo $push
-$push
+#$push
 
