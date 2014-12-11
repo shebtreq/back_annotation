@@ -1,3 +1,7 @@
 #!/bin/bash
-git commit -am '$1'
 
+string=$@
+
+echo $string
+
+git commit -am '$string'
