@@ -1,0 +1,13 @@
+#!/bin/bash
+
+string=$@
+
+addall="git add ."
+commit="git commit -m '$@'"
+
+echo $addall
+echo $commit
+
+$addall
+$commit
+

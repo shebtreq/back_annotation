@@ -10,4 +10,6 @@ Contents:
 
    toctreepoints
    randompoints
+   learningdirectives
+   learningextensions
 

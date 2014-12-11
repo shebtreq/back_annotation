@@ -23,7 +23,7 @@ Consider this example (taken from the Python docs’ library reference index):
 
 
 
-Including Random Points page here
+..Including Random Points page here
 
-.. include:: randompoints.rst
+".. include:: randompoints.rst"
    
