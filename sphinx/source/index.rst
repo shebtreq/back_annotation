@@ -8,5 +8,5 @@ Contents:
    :maxdepth: 4
 
    toctreepoints
-   bla
+   randompoints
 
