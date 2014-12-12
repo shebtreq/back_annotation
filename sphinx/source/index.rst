@@ -5,7 +5,6 @@ My Sphinx Documentation
 Contents:
 
 .. toctree::
-	:numbered: 1
 	:maxdepth: 2
 
 	summaryweek2
