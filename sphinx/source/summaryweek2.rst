@@ -1,6 +1,7 @@
 *****************
 Summary of Week 2
 *****************
+
 Friday 14-December-2014
 ########################
 
@@ -17,6 +18,7 @@ Topics Researched
 ----------------
 Effort Scale
 ----------------
+
 | Effort -> 60%
 | Days worked Mon, Thurs, Fri
 
