@@ -5,11 +5,14 @@ My Sphinx Documentation
 Contents:
 
 .. toctree::
-	:numbered:
+	:numbered: 1
 	:maxdepth: 2
 
    toctreepoints
    randompoints
+   citations
+   sections
+   bulletpoints
+   formatting
    learningdirectives
    learningextensions
-
