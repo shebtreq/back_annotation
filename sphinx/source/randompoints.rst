@@ -13,7 +13,7 @@ Line blocks
 | the source file.
 
 
-Grid table:
+Grid table
 -----------
 
 +------------+------------+-----------+ 
