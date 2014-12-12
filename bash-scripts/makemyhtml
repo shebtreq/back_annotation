@@ -1,0 +1,12 @@
+#!/bin/bash
+echo Trying to generate html!!
+sphinx-build -b html -d build/doctree  source build
+chmod 777 build/index.html
+
+a="file://"
+b="$(pwd)"
+c="/build/index.html"
+
+url=$a$b$c
+
+/usr/bin/open -a "/Applications/Google Chrome.app" $url
