@@ -18,8 +18,8 @@ Topics Researched
 ----------------
 Effort Scale
 ----------------
-Effort -> 60 %
-Days worked Mon, Thurs, Fri
+| Effort -> 60%
+| Days worked Mon, Thurs, Fri
 
 
 ===================
