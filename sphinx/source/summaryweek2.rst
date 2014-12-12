@@ -1,6 +1,7 @@
 Summary of Week 2
 *****************
- Friday 14-December-2014
+
+Friday 14-December-2014
 ########################
 
 Topics Researched
