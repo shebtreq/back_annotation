@@ -1,2 +1,6 @@
 !/sphinx/build/
 /sphinx/build/*
+/sphinx/commitall
+/sphinx/makemyhtml
+/sphinx/pushall
+
