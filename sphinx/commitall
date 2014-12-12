@@ -3,7 +3,7 @@
 string=$@
 echo $@
 
-addall="git add ."
+addall="git add .."
 commit=$'git commit -m \''$string$'\''
 
 echo $addall
