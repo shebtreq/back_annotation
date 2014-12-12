@@ -2,15 +2,17 @@
 
 string=$@
 echo $@
+
 addall="git add ."
-commit=$'git commit -m \''$@$'\''
+commit=$'git commit -m \''$string$'\''
 push="git push"
 
 echo $addall
-echo $commit
 $addall
+
+echo $commit
 $commit
 
 echo $push
-#$push
+$push
 
