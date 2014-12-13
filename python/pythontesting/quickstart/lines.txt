@@ -1,0 +1,89 @@
+ me:  The root directory holds the friday report folder and the sphinx folder where I placed my sphinx test code.  
+
+The shinx folder holds a bunch of shell scripts and the source folder that holds the rst files. 
+
+the bash scripts are needed to make my job faster when trying to make html files (makemyhtml) and when im saving to the repsotiry (commitall, pushall).
+
+The source folder holds the rst files. The content of the files are about my sphinx documentation. Like a reference or a cheat sheet
+ Sent at 3:27 PM on Friday
+ Abelardo:  Ok. A couple of things to take into account.
+(suggestions)
+The scripts are local to your machine (as they have local paths), you can keep them, but it is probably better not to include them in the repo.
+You could try to remove them from the repo and keep them as local files that are ignored
+ me:  yep will gitignore them
+ Abelardo:  Another thing. 
+The "make html" works, but it is using an extension called "intersphinx" that 
+for some obscure reason loads the "intersphinx inventory" from the network.
+In principle we do not need this
+(https://bitbucket.org/birkenfeld/sphinx/issue/547/timeout-for-remote-intersphinx-inventory)
+See if you can find how to disable it.
+The, when you run the make html, as you can see, you get a few "warnings". Did you see them?
+ me:  yeah i saw the url regarding the issues
+but i dont have any issues on my computer for some reason. also i use this command instead of make html
+
+sphinx-build -b html source build
+ Abelardo:  Make html does precisely that.
+ me:  yes with doctree as an option
+ Abelardo:  The warnings are the same as when you compile code. It is a good idea (specially when starting to work with these tools) to try to remove all of them.
+Some of the warnings are about missing labels. It is very likely that with some of these warnings you end up with an imperfect HTML file.
+So one first step you can take is to "polish" the "build" and make sure you reach zero warnings.
+At the end of the process the tool tells you that the build process had 21 warnings.
+ Sent at 3:35 PM on Friday
+ Abelardo:  Take a look at the generated HTML tree with the browser (I usually keep one open and the index.html bookmarked to go there quickly)
+ me:  there are so many warnings because i didnt try to create good site. I dumped all the code i needed as a reference. When i first made the html, it didnt have so much random code so it didnt have these warnings
+ Abelardo:  Yes, good.
+I just want to make sure you connect the warnings with their effect.
+If you go to the page titled "random points", towards the bottom you have a missing image, which is probably one of the warnings.
+This is just to make sure you see the effect of the whole process. It is a bit like compiling code, but producing HTML instead.
+ me:  yes correct. this just code copied from the documentation which i wanted to keep for later referencing
+ Abelardo:  HTML does not have to "run", but it has to be correct.
+Good.
+ me:  ok ill make a new rst and remove the warnings
+some points regarding creating irectives
+I have looked up domains and directives and extensions. When trying to create directives we have to import from the docutils library which has very little documentaiton. im reading through the docutil methods themselves to figure out how to make my directives more functionall
+ Abelardo:  Yes, it is a bit rough the documentation. I agree.
+ me:  like the nodes library and directives library
+any hints or suggestions
+??
+ Abelardo:  Yes
+In this page:
+http://docutils.sourceforge.net/docs/index.html#user-introductory-tutorial-material-for-end-users
+Look for the section "howto/: Instructions for developers"
+The two tutorials "Creating reStructuredText Directives" and "Creating reStructuredText Interpreted Text Roles" are the key resources.
+ Sent at 3:41 PM on Friday
+ me:  ok will do. also should i start with knitr and shiny after ive created complicated directives
+ Abelardo:  Yes, but let's first control a bit more in depth Sphinx and the two types of directives.
+(directives and inline directives)
+ Sent at 3:43 PM on Friday
+ Abelardo:  The deliverable for next week is a "polished" sphinx HTML site with a few pages AND two directives, one of them regular, the other "interpreted text role".
+Do you understand what I mean by that? 
+ Sent at 3:45 PM on Friday
+ me:  interpreted text role would be regarding formatting of texys
+by inline directives that work on a line?
+ Abelardo:  Yes. You first need to get more familiar with reStructuredText, and you'll see more clearly what they are and why do you need them.
+Sorry, inline directives I meant text roles  ￼
+ Sent at 3:48 PM on Friday
+ Abelardo:  If you see that writing the python code to create a new directive is too complex, let me know and I'll lend you a hand.
+Do we agree on these deliverables for the following week?
+ me:  thanks i might need it if i cant progress further. i work best wehen sample code is given to me. i can read it and understand it
+yes agreed
+also by polished
+you mean you want it to look good
+without warnings
+like the site about your projects you sent me
+via email
+ Abelardo:  Agree. Yes. You'll find examples of directives on the net.
+By polished, yes I mean with no warning at all.
+Ok. So, to conclude, three final things:
+1) Take all this ideas and deliverables and put it all together in a plain text file as the summary of the week.
+2) Add at the end of that file one more thing: an estimation of your productivity the last week (mon-fri) from 0 to 100.
+3) Add, commit and push the file to the repo so I can take a look at it. No need to notify, I get one from github.
+Ok?
+ me:  yes ill do that
+one more thing?
+ Abelardo:  Go ahead.
+ me:  also I was reading the  extentions and domains documentaiton. is domains important for the future?
+ Abelardo:  Not for the moment. We'll restrict ourselves to a single domain.
+As for extensions, in principle we might use some of them. The new directives and interpreted text roles will be installed as extensions. They are a special case of extensions.
+ me:  yeah thats what i thought. ok ill message you coming monday if im stuck on anything
+
