@@ -1,19 +1,19 @@
 .DS_Store
 
 */*/build/*
-*/*/commitall
-*/*/makemyhtml
-*/*/pushall
+*/*/*commitall
+*/*/*makemyhtml
+*/*/*pushall
 
 */build/*
-*/commitall
-*/makemyhtml
-*/pushall
+*/*commitall
+*/*makemyhtml
+*/*pushall
 
 build/*
-commitall
-makemyhtml
-pushall
+*commitall
+*makemyhtml
+*pushall
 
 
 
