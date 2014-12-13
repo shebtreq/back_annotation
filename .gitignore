@@ -1,6 +1,19 @@
-!/sphinx*/build/
-/sphinx*/build/*
-/sphinx*/commitall
-/sphinx*/makemyhtml
-/sphinx*/pushall
+.DS_Store
+
+*/*/build/*
+*/*/commitall
+*/*/makemyhtml
+*/*/pushall
+
+*/build/*
+*/commitall
+*/makemyhtml
+*/pushall
+
+build/*
+commitall
+makemyhtml
+pushall
+
+
 
