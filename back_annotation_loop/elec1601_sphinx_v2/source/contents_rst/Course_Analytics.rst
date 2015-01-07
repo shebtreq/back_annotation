@@ -6,16 +6,8 @@ This page displays plots which have been generated from the metatadata acquired 
 
 
 .. raw:: html
-	:file: Course_Analytics_rst/rawplotonhtml.html
-|
-|
-|
-|
-|
-|
-|
-|
-|
+	:file: Course_Analytics_rst/timeofdaystudentstudy.html
+
 |
 |
 |
@@ -23,5 +15,6 @@ This page displays plots which have been generated from the metatadata acquired 
 |
 |
 
-..
-	 include:: Course_Analytics_rst/timeofdaystudentstudy.rst
+
+
+
