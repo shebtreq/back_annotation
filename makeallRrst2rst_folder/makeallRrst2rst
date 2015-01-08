@@ -1,0 +1,101 @@
+#!/bin/bash
+
+
+str=$(find ~/ -name "*.Rrst")
+
+oldsub=$'.//'
+newsub=$'./'
+while [[ $str == *$oldsub* ]]
+do
+	str="${str/$oldsub/$newsub}"
+done
+
+originaldir=$(find ~/ -name "makeallRrst2rst")
+originaldir=$(echo $originaldir | rev)
+originaldir=${originaldir:15}
+originaldir=$(echo $originaldir | rev)
+
+
+echo  
+echo  
+echo  
+echo  
+echo  
+echo  
+
+shout=$"Directory where I (the bash script) reside:"
+echo $shout
+echo $originaldir
+
+echo  
+echo  
+echo  
+echo  
+echo  
+echo  
+
+newstr=''
+for word in $str
+do
+	
+	dir="${word%/*}"
+	dir="$dir/"
+		
+	filename_Rrst="${word/$dir/$newdir}"
+	tsrR_emanelif=$(echo $filename_Rrst | rev)	
+	filename_rst="${tsrR_emanelif/R/$emptychar}"
+	filename_rst=$(echo $filename_rst | rev)
+	
+	if [[ "$originaldir"  != "$dir" ]]; then
+		a=$"cp -f $originaldir"
+		b=$"Rrst2rst.R $dir"
+		copyRscript=$a$b
+		$copyRscript
+		echo Directory harbouring .Rrst found and Rscript being sent to it as we speak
+	else
+		echo .Rst found in my directory....
+	fi	
+
+	changedir="cd $dir"
+	$changedir
+	
+	echo Entering directory where .Rrst resides. File path:
+	echo $dir$filename_Rrst
+	echo Executing Rrst2rst script!!!
+	runRscript="Rscript Rrst2rst.R $filename_Rrst $filename_rst"
+	$runRscript
+	
+
+	oldsubstring=$'/strq//'
+	newsubstring=$'/strq/'
+	originalslightlydir="${originaldir/$oldsubstring/$newsubstring}"
+	currdir=$(pwd)
+	currdir="$currdir/"
+
+	if [[ "$originalslightlydir"  != "$currdir" ]]; then
+		rm -f Rrst2rst.R
+        echo Deleting Rscript from directory
+    else
+    	echo R file being preserved
+	fi
+	
+	echo Leaving directory
+	echo  
+	echo  
+	echo  
+	echo  
+	echo  
+	echo  
+
+done
+
+
+
+
+
+
+
+
+
+
+

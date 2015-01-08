@@ -1,4 +1,4 @@
-```{r, echo=FALSE}
+.. {r timeofdaystudentsstudyplot, echo=FALSE, fig.cap=""}
 
 rm(list=ls())
 
@@ -30,6 +30,6 @@ for(i in 1:length)
   #message("exact hour:", exacthour)
 }
 
-hist(videotimearray,breaks=24,xlim=c(0,24), main="Plot showing the distribution of study time for students", col="skyblue", xlab="Time Of Day", ylab="Frequency", border="blue")
+hist(videotimearray,breaks=24,xlim=c(0,24), main="Plot showing the distribution of study time for students", col="skyblue", xlab="Time Of Day", ylab="Frequency", border="white")
 
-```
+.. ..

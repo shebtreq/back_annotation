@@ -12,7 +12,7 @@ Contents:
    
    contents_rst/Course_Organization
    contents_rst/Course_Objectives
-   contents_rst/Course_Analytics
+   contents_rst/Course_Analytics_rst/Course_Analytics
    contents_rst/Week_1_Organization_and_Computer_System_Overview
    contents_rst/Week_2_Information_Encoding
    contents_rst/Week_3_Computer_Memory
