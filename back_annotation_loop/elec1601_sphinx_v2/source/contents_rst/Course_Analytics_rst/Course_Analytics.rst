@@ -7,8 +7,8 @@ This page displays plots which have been generated from the metatadata acquired 
 |
 |
 |
-.. include:: timeofdaystudentsstudyplot.rst
 
+.. include:: timeofdaystudentsstudyplot.rst
 
 
 |
