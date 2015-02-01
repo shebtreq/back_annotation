@@ -1,0 +1,10 @@
+#!/bin/bash
+
+echo Deleting conflicting files...
+rm -rf build
+rm -rf cbuild
+rm -rf csource
+echo Done removing conflicting files
+
+echo Starting sphinx program...
+sphinx-build -b html source build/html

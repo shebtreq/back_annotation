@@ -122,6 +122,7 @@ def create_dir_for_supporting_html(app):
 
 
 def createRrst(dir_Rrst, name):
+    print dir_Rrst
     fp = open(dir_Rrst,'w')
     data = '.. {r %s, echo=FALSE, fig.cap=\"\"} \n rm(list=ls()) \n dump <- read.csv(\"~/Desktop/Classified/classroom_dataset.csv\", header = TRUE, sep =\'\t\') \n dump.height <- dim(dump)[1] \n dump.width <- dim(dump)[2] \n rownames(dump) <- NULL \n dump.width <- dim(dump)[2] \n dump.video.played <- dump[ with(dump, grepl(\"%s\", payload)), ] \n dump.video.played <- dump.video.played[ with(dump.video.played, grepl(\"PLAY\", payload)), ] \n dump.video.played <- subset(dump.video.played, selec = c(\"week\")) \n dump.video.played.height <- dim(dump.video.played)[1] \n hist.data <- c(NULL) \n for(i in 1:dump.video.played.height) \n { \n   value <- as.numeric(dump.video.played[i,1]) \n   hist.data <- c(hist.data, value) \n } \n hist(hist.data, breaks=16, xlim=c(0,16), main="Distribution of video watched over the semester\", col=\"skyblue\", xlab=\"Time Of Day\", ylab=\"Frequency\", border=\"white\") \n .. .. \n' % (name, name)
     fp.write(data)

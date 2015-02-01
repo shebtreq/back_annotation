@@ -1,0 +1,25 @@
+:orphan:
+
+==================================================
+Video Analytics of 6h0cM-ASXGc
+==================================================
+
+.. {r 6h0cM-ASXGc, echo=FALSE, fig.cap=""} 
+ rm(list=ls()) 
+ dump <- read.csv("~/Desktop/Classified/classroom_dataset.csv", header = TRUE, sep ='	') 
+ dump.height <- dim(dump)[1] 
+ dump.width <- dim(dump)[2] 
+ rownames(dump) <- NULL 
+ dump.width <- dim(dump)[2] 
+ dump.video.played <- dump[ with(dump, grepl("6h0cM-ASXGc", payload)), ] 
+ dump.video.played <- dump.video.played[ with(dump.video.played, grepl("PLAY", payload)), ] 
+ dump.video.played <- subset(dump.video.played, selec = c("week")) 
+ dump.video.played.height <- dim(dump.video.played)[1] 
+ hist.data <- c(NULL) 
+ for(i in 1:dump.video.played.height) 
+ { 
+   value <- as.numeric(dump.video.played[i,1]) 
+   hist.data <- c(hist.data, value) 
+ } 
+ hist(hist.data, breaks=16, xlim=c(0,16), main="Distribution of video watched over the semester", col="skyblue", xlab="Time Of Day", ylab="Frequency", border="white") 
+ .. ..

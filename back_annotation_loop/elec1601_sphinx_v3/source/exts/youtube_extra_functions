@@ -1,0 +1,71 @@
+
+#source = get_file_name_from_directive(self)
+#create_second_directive(source, self.arguments[0])
+
+
+
+
+def get_file_name_from_directive(a_directive):
+        content = str(a_directive.state.document)
+        source = ""
+        matchObj = re.match(r'.*source=\"(.*)\".*', content)
+        if matchObj:
+            source = matchObj.group(1)
+        else:
+            raise a_directive.error('The url of the document being processed was not found in the get_file_name function')
+        try:
+            index = source.index('"')
+        except ValueError:
+            pass
+        else:
+            source = source[0:index]
+
+        print("\n\nsource: %s %s" % (type(source), source))
+
+        return source
+
+def create_second_directive(url_doc, video_id):
+    fp = open(url_doc,'r')
+    content = fp.read()
+    fp.close()
+    new = "\n"
+
+    dir_source = os.path.abspath(__file__).replace("source/exts/youtube.py", "") + "source/"
+
+    str = url_doc.replace(dir_source, "")
+    count = str.count('/')
+
+    dots = "."
+    for i in range(0,count):
+        dots += "."
+
+    print("%s" % dots)
+
+    youtubeflag = 0
+    for line in content.splitlines():
+
+        if (youtubeflag>0) and re.match(r'\s*\:.*\:.*', line):
+            print("%s %s" % (line, youtubeflag))
+            youtubeflag=1
+        elif re.match(r'\s*\.\.\s+youtube::.*', line) and line.find(video_id)!=-1:
+            youtubeflag=1
+            print("%s %s %s" % (line, youtubeflag, video_id))
+        elif youtubeflag>0:
+            youtubeflag+=1
+
+        if youtubeflag>=3:
+            print ("inserting include!!!" , youtubeflag)
+            new+= ".. include:: " + dots + "/_supporting_html/" + video_id + "\n"
+            youtubeflag=0
+    print("%s" % new)
+
+    url = os.path.abspath(__file__).replace("source/exts/youtube.py", "") + "source/video_analytics.rst"
+    url = remove_c(url)
+
+
+    #gp = open(url, 'a')
+    #gp.write(new)
+    #gp.close()
+
+    print("end search")
+    #matchObj = re.match(r'source=\"(.*)\".*', content)
