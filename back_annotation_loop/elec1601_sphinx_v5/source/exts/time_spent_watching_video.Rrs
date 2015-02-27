@@ -1,0 +1,117 @@
+.. {r time_spent_watching_video_%s1, echo=FALSE, fig.cap=""} 
+
+rm(list=ls())
+require(RCurl)
+library(rjson)
+
+#Find duration of the video
+url <- paste0("http://gdata.youtube.com/feeds/api/videos/", "%s2", "?v=2&alt=jsonc", sep="")
+video.attributes <- (fromJSON(getURL(url)))$data
+video.duration <- video.attributes$duration
+video.duration
+
+
+#Extract the user table
+dump <- read.csv("~/Desktop/Classified/classroom_dataset.csv", header = TRUE, sep ='\t')
+dump.height <- dim(dump)[1]
+dump.width <- dim(dump)[2]
+rownames(dump) <- NULL
+index <- seq(from = 1, length.out = dump.height)
+dump <- data.frame(Index = index, dump[1:dump.height, 1:dump.width])
+dump.width <- dim(dump)[2]
+
+#Compute the average time spent on the chosen video
+video.table <- dump
+video.table <- video.table[ with(video.table, grepl("6h0cM-ASXGc", payload)), ]
+video.table <- video.table[! with(video.table, grepl("LOADED", payload)), ]
+rownames(video.table) <- NULL
+video.table.height <- dim(video.table)[1]
+
+#Find number students in the course
+total.students <- video.table$user_id[1]
+for(i in 2:video.table.height)
+  if(video.table$user_id[i]>=total.students)
+    total.students <- video.table$user_id[i]
+
+
+#Compute time spent by each student
+time.spent.array <- c(NULL)
+user_id.array <- c(NULL)
+
+real.time.spent.array <- c(NULL)
+real.user_id.array <- c(NULL)
+
+for(i in 1:total.students)
+{
+  if(!is.na(match(i, video.table$user_id)))
+  {
+    greplstring <- paste0("^", i, "{1}$", sep="");
+    user.video.table <- video.table[ with(video.table, grepl(greplstring, user_id)), ];
+    if(dim(user.video.table)[1]==0)
+    {
+      time.spent.array <- c(time.spent.array, c(0));
+      user_id.array <- c(user_id.array, c(i));
+      next;
+    }
+    rownames(user.video.table) <- NULL;
+    ip <- user.video.table$remote_addr[1];
+    
+    ip.user.video.table <- user.video.table[ with(user.video.table, grepl(ip, remote_addr)), ];
+    
+    time.array <- subset(ip.user.video.table, selec = c("id..received"));
+    date <- as.character(time.array[1,1]);
+    date <- as.character(as.data.frame(strsplit(date,' '))[1,1]);
+    ip.user.video.table <- user.video.table[ with(user.video.table, grepl(date, id..received)), ];
+    
+    time.array <- subset(ip.user.video.table, selec = c("id..received"));
+    date <- as.character(time.array[1,1]);
+    time <- as.character(as.data.frame(strsplit(date,' '))[2,1]);
+    hours <- as.numeric(as.character(as.data.frame(strsplit(time,':'))[1,1]));
+    minutes <- as.numeric(as.character(as.data.frame(strsplit(time,':'))[2,1]));
+    seconds <- as.numeric(as.character(as.data.frame(strsplit(time,':'))[3,1]));
+    starttime <- hours*60*60 + minutes*60 + seconds;
+    
+    time.array.length <- dim(time.array)[1];
+    date <- as.character(time.array[time.array.length,1]);
+    time <- as.character(as.data.frame(strsplit(date,' '))[2,1]);
+    hours <- as.numeric(as.character(as.data.frame(strsplit(time,':'))[1,1]));
+    minutes <- as.numeric(as.character(as.data.frame(strsplit(time,':'))[2,1]));
+    seconds <- as.numeric(as.character(as.data.frame(strsplit(time,':'))[3,1]));
+    endtime <-  hours*60*60 + minutes*60 + seconds;
+    
+    time.spent <- endtime-starttime;
+    
+    if(time.spent>10)
+    {
+      time.spent.array <- c(time.spent.array, c(time.spent));
+      user_id.array <- c(user_id.array, c(i));
+      real.time.spent.array <- c(real.time.spent.array, c(time.spent));
+      real.user_id.array <- c(real.user_id.array, c(i));
+    }
+    else
+    {
+      time.spent.array <- c(time.spent.array, c(0));
+      user_id.array <- c(user_id.array, c(i));
+    }
+  }
+ else
+ {
+   time.spent.array <- c(time.spent.array, c(0));
+   user_id.array <- c(user_id.array, c(i));
+ }
+}
+
+student_and_time_spent <- data.frame(user_id.array)
+student_and_time_spent["time_spent"] <- NA
+student_and_time_spent$time_spent <- time.spent.array
+average_time_spent <- mean(real.time.spent.array[real.time.spent.array<(video.duration*5)])
+
+for(i in 1:dim(student_and_time_spent)[1])
+{
+  title = paste0("Time spent on video by ", student_and_time_spent$user_id.array[i], " vs. class average")
+  barplot(c(video.duration, student_and_time_spent$time_spent[i], average_time_spent), names.arg=c("Video Duration", "Student", "Class average"), main=title, col="skyblue", ylab="Time", border="blue")
+}
+
+ .. ..
+
+

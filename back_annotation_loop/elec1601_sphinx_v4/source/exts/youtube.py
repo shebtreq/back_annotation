@@ -37,7 +37,7 @@ def visit_youtube_node(self, node):
 
     bsupp = os.path.abspath(__file__).replace("source/exts/youtube.py", "") + "build/html/_supporting_html/" + node["id"] + ".html"
     bsupp = remove_c(bsupp)
-    link_url = "<div> <a href=\"%s\">Analytics for video %s</a></div>" % (bsupp, node["id"])
+    link_url = "<div> <a href=\"%s\">Analytics for this video</a></div>" % bsupp
     self.body.append(link_url)
     self.body.append(self.starttag(node, "iframe", **attrs))
     self.body.append("</iframe>")

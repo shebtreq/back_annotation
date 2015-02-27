@@ -1,0 +1,5 @@
+Title: Academic Web App Tool
+
+The tool that allows any author to intuitively publish their educational content onto an open source online platform. The author can easily deploy their very own full-scale web app without needing any prior web development experience. The platform provides student feedback via interactive visual interfaces, which in turn serves as a positive reinforcement to their performance. The system that feeds the visual analytics back to the individual user and the general audience is fully automated, and does not require the assistance of the author.
+
+Date: 2 December - 28 Februrary
